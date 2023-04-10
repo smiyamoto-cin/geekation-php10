@@ -24,7 +24,7 @@ class SelfIntroduction
         string $lastName,
         string $firstName,
         int $age,
-        string $hobby,
+        string $hobby
     ) {
         $this->lastName     = $lastName;
         $this->firstName    = $firstName;
@@ -34,7 +34,7 @@ class SelfIntroduction
 
     public function getFullName()
     {
-        return $this->lastName.$this->firstName;
+        return $this->lastName.' ' . $this->firstName;
     }
 
     public function getAge()
@@ -53,8 +53,10 @@ if (! empty($_POST)) {
     $firstName        = $_POST['first_name'];
     $age              = $_POST['age'];
     $hobby            = $_POST['hobby'];
+    $selfIntroduction = new SelfIntroduction($lastName, $firstName, $age, $hobby);
+    
     if ($selfIntroduction) {
-        echo '私の名前は'.$selfIntroduction->getFullName().'年齢は'.$selfIntroduction->getAge().'です。';
+        echo '私の名前は'.$selfIntroduction->getFullName().'です。年齢は'.$selfIntroduction->getAge().'歳です。';
         echo '<br>';
         echo '趣味は'. $selfIntroduction->getHobby().'です。';
     }
@@ -68,7 +70,7 @@ if (! empty($_POST)) {
 </head>
 <body>
     <section>
-    <form action='./debug02.php' method="post">
+    <form action='./lesson2.php' method="post">
         <label>姓</label>
         <input type="text" name="last_name"/>
         <label>名</label>
